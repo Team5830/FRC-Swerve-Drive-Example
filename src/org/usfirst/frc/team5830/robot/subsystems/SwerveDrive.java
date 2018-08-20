@@ -16,6 +16,12 @@ public class SwerveDrive extends Subsystem {
 	
 	double gyroRad;
 	
+	//CHANGE THESE VALUES! Failing to do so could result in 
+	//L refers to the physical distance between the front and back wheels
+	//W refers to the physical distance between the left and right wheels
+	public final double L = 21;
+	public final double W = 26;
+	
 	public void drive (double x1, double y1, double x2) {
 	    double r = Math.sqrt ((L * L) + (W * W));
 	    y1 *= -1;
@@ -53,9 +59,6 @@ public class SwerveDrive extends Subsystem {
 	    frontLeft.drive (frontLeftSpeed, frontLeftAngle);
 	
 	}
-	
-	public final double L = 21;
-	public final double W = 26;
 	
 	private WheelDrive backRight;
 	private WheelDrive backLeft;

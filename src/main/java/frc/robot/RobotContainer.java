@@ -9,7 +9,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.subsystems.SwerveDrive;
 import frc.robot.subsystems.WheelDrive;

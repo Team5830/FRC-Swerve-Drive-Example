@@ -8,24 +8,22 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.Spark;
 
 public class WheelDrive {
 	private Spark angleMotor;
 	private Spark speedMotor;
-	private PIDController pidController;
+    private PIDController pidController;
+    private AnalogInput encoderInput;
 
     public WheelDrive (int angleMotor, int speedMotor, int encoder) {
         this.angleMotor = new Spark(angleMotor);
         this.speedMotor = new Spark(speedMotor);
+        this.encoderInput = new AnalogInput(encoder);
 
-        pidController = new PIDController (2, 0, 0.5, new AnalogInput (encoder), this.angleMotor);
-
-        pidController.setOutputRange (-1, 1);
-        pidController.setInputRange(0, 4.95);
-        pidController.setContinuous ();
-        pidController.enable ();
+        pidController = new PIDController (2, 0, 0.5);
+        pidController.enableContinuousInput(0, 4.95);
     }
 
     private final double MAX_VOLTS = 4.95;
@@ -41,7 +39,7 @@ public class WheelDrive {
             setpoint = setpoint - MAX_VOLTS;
         }
 
-        pidController.setSetpoint (setpoint);
+        angleMotor.set(pidController.calculate(encoderInput.getVoltage(), setpoint));
     }
 
 }

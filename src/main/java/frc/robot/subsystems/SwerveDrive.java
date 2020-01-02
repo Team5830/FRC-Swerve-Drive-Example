@@ -5,6 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+/**
+ * @author Jacob Misirian
+ * https://jacobmisirian.gitbooks.io/frc-swerve-drive-programming/content/
+ *
+ * Max P. implemented
+ */
+
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -13,9 +20,6 @@ import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.commands.DriveTeleop;
 
-/**
- * Add your docs here.
- */
 public class SwerveDrive extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
@@ -30,18 +34,17 @@ public class SwerveDrive extends SubsystemBase {
     y1 *= -1;
     x1 *= -1;
     
-    //The following is for Field oriented swerve drive. If you do not have a gyroscope, delete from here until specified.
-    gyroRad = RobotContainer.gyro.getAngle()*Math.PI/180;
-    
-    //Set to true to enable Field-oriented drive. Set to false for Robot-oriented drive.
-    //Making this a boolean toggle in SmartDashboard or something is recommended, as this can be switched at any time during the game.
-    //Sometimes robot will drive the opposite direction in some orientations. Add or remove Math.PI in this function to correct.
-    if(true) {
+    //If this is true, robot will drive Field Oriented. If it is false, robot will drive Robot Oriented.
+    //Replacing this boolean with a toggle in SmartDashboard or a Joystick button is recommended, as this can be switched at any time during the game.
+    //Sometimes the robot will drive the opposite direction in some orientations. Add or remove Math.PI in this function to correct.
+    if(RobotContainer.hasGyro){ 
+      //Replace .getAngle() with another method if your gyroscope requires it.
+      gyroRad = RobotContainer.gyro.getAngle()*Math.PI/180;
+      
       double temp = y1*Math.cos(gyroRad) + x1*Math.sin(gyroRad-Math.PI);
       x1 = -y1*Math.sin(gyroRad-Math.PI) + x1*Math.cos(gyroRad);
       y1 = temp;
     }
-    //Stop deleting here if you don't have a gyroscope.
 
     double a = x1 - x2 * (Constants.L / r);
     double b = x1 + x2 * (Constants.L / r);

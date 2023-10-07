@@ -5,14 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot;
+package frc.robot;
 
-import org.usfirst.frc.team5830.robot.subsystems.SwerveDrive;
-import org.usfirst.frc.team5830.robot.subsystems.WheelDrive;
+import frc.robot.subsystems.SwerveDrive;
+import frc.robot.subsystems.WheelDrive;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Scheduler;
-
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -40,19 +39,19 @@ public class Robot extends TimedRobot {
 	public void disabledInit() {}
 
 	@Override
-	public void disabledPeriodic() {Scheduler.getInstance().run();}
+	public void disabledPeriodic() {CommandScheduler.getInstance().run();}
 	
 	@Override
 	public void autonomousInit() {}
 
 	@Override
-	public void autonomousPeriodic() {Scheduler.getInstance().run();}
+	public void autonomousPeriodic() {CommandScheduler.getInstance().run();}
 
 	@Override
 	public void teleopInit() {}
 
 	@Override
-	public void teleopPeriodic() {Scheduler.getInstance().run();}
+	public void teleopPeriodic() {CommandScheduler.getInstance().run();}
 
 	@Override
 	public void testPeriodic() {}

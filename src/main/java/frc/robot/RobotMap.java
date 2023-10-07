@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot;
+package frc.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 

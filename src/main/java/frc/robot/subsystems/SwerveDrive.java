@@ -1,9 +1,9 @@
-package org.usfirst.frc.team5830.robot.subsystems;
+package frc.robot.subsystems;
 
-import org.usfirst.frc.team5830.robot.RobotMap;
-import org.usfirst.frc.team5830.robot.commands.DriveTeleop;
+import frc.robot.RobotMap;
+//import frc.robot.commands.DriveTeleop;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /**
  * @author Jacob Misirian
@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Max P. implemented
  */
 
-public class SwerveDrive extends Subsystem {
+public class SwerveDrive extends SubsystemBase {
 	
 	double gyroRad;
 	
@@ -73,9 +73,9 @@ public class SwerveDrive extends Subsystem {
 	    
 	}
 	
-	public void initDefaultCommand() {
-		setDefaultCommand(new DriveTeleop());
-	}
+	//public void initDefaultCommand() {
+	//	setDefaultCommand(new DriveTeleop());
+	//}
 	
 
 }

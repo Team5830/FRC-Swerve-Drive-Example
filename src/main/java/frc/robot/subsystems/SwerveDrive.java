@@ -1,9 +1,8 @@
 package frc.robot.subsystems;
 
-import frc.robot.RobotMap;
-//import frc.robot.commands.DriveTeleop;
-
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.SerialPort;
 
 /**
  * @author Jacob Misirian
@@ -21,15 +20,16 @@ public class SwerveDrive extends SubsystemBase {
 	//W refers to the physical distance between the left and right wheels
 	public final double L = 21;
 	public final double W = 26;
-	
+	public AHRS ahrs = new AHRS(SerialPort.Port.kUSB1);
+
 	public void drive (double x1, double y1, double x2) {
 	    double r = Math.sqrt ((L * L) + (W * W));
 	    y1 *= -1;
 	    x1 *= -1;
 	    
 	    //The following is for Field oriented swerve drive. If you do not have a gyroscope, delete from here until specified.
-	    gyroRad = RobotMap.gyro.getAngle()*Math.PI/180;
-	    
+	    gyroRad = ahrs.getAngle()*Math.PI/180;
+	
 	    //Set to true to enable Field-oriented drive. Set to false for Robot-oriented drive.
 	    //Making this a boolean toggle in SmartDashboard or something is recommended, as this can be switched at any time during the game.
 	    if(true) {
@@ -72,10 +72,6 @@ public class SwerveDrive extends SubsystemBase {
 	    this.frontLeft = frontLeft;
 	    
 	}
-	
-	//public void initDefaultCommand() {
-	//	setDefaultCommand(new DriveTeleop());
-	//}
 	
 
 }

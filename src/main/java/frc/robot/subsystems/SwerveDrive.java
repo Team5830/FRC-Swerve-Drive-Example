@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * @author Jacob Misirian
@@ -73,5 +74,14 @@ public class SwerveDrive extends SubsystemBase {
 	    
 	}
 	
+	@Override
+	public void periodic() {
+		SmartDashboard.putNumber("backright volt", backRight.getVoltage());
+		SmartDashboard.putNumber("backleft volt", backLeft.getVoltage());
+		SmartDashboard.putNumber("frontright volt", frontRight.getVoltage());
+		SmartDashboard.putNumber("frontleft volt", frontLeft.getVoltage());
+		
+		SmartDashboard.putNumber("ahrs angle", ahrs.getAngle());
+	}
 
 }

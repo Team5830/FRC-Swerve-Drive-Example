@@ -13,11 +13,11 @@ public class RobotContainer {
 
   private static RobotContainer m_robotContainer = new RobotContainer();
 
-  public static WheelDrive backRight = new WheelDrive (DrivePorts.brAngle, DrivePorts.brDrive, DrivePorts.brEncoder);
-  public static WheelDrive backLeft = new WheelDrive (DrivePorts.blAngle, DrivePorts.blDrive, DrivePorts.blEncoder);
-  public static WheelDrive frontRight = new WheelDrive (DrivePorts.frAngle, DrivePorts.frDrive, DrivePorts.frEncoder);
-  public static WheelDrive frontLeft = new WheelDrive (DrivePorts.flAngle, DrivePorts.flDrive, DrivePorts.flEncoder);
-  public static SwerveDrive swerveDrive = new SwerveDrive (backRight, backLeft, frontRight, frontLeft);
+  public static WheelDrive backRight;
+  public static WheelDrive backLeft;
+  public static WheelDrive frontRight;
+  public static WheelDrive frontLeft;
+  public static SwerveDrive swerveDrive;
 
   // Joysticks
   private final Joystick joystick = new Joystick(0);
@@ -29,6 +29,11 @@ public class RobotContainer {
   * The container for the robot.  Contains subsystems, OI devices, and commands.
   */
   private RobotContainer() {
+     backRight = new WheelDrive (DrivePorts.brAngle, DrivePorts.brDrive, DrivePorts.brEncoder);
+     backLeft = new WheelDrive (DrivePorts.blAngle, DrivePorts.blDrive, DrivePorts.blEncoder);
+     frontRight = new WheelDrive (DrivePorts.frAngle, DrivePorts.frDrive, DrivePorts.frEncoder);
+     frontLeft = new WheelDrive (DrivePorts.flAngle, DrivePorts.flDrive, DrivePorts.flEncoder);
+     swerveDrive = new SwerveDrive (backRight, backLeft, frontRight, frontLeft);
     
     // Configure the button bindings
     configureButtonBindings();

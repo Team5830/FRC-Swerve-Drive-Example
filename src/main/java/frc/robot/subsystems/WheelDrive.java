@@ -55,4 +55,8 @@ public void drive (double speed, double angle) {
     //pidController.setSetpoint (setpoint);
 }
 
+public double getVoltage() {
+    return encoder.getVoltage();
+}
+
 }

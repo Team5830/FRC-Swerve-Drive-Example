@@ -37,23 +37,23 @@ public class Constants {
 	//Enter the Analog port your encoder is connected to.
 	public static final class DrivePorts {
 		//Back Right:
-		public static int brAngle = 0;//PWM Port
-		public static int brDrive = 1;//PWM Port
+		public static int brAngle = 7;//PWM Port
+		public static int brDrive = 8;//PWM Port
 		public static int brEncoder = 0;//Analog Port
 		
 		//Back Left:
-		public static int blAngle = 2;//PWM Port
-		public static int blDrive = 3;//PWM Port
-		public static int blEncoder = 1;//Analog Port
+		public static int blAngle = 0;//PWM Port
+		public static int blDrive = 1;//PWM Port
+		public static int blEncoder = 3;//Analog Port
 
 		//Front Right:
-		public static int frAngle = 4;//PWM Port
-		public static int frDrive = 5;//PWM Port
-		public static int frEncoder = 2;//Analog Port
+		public static int frAngle = 3;//PWM Port
+		public static int frDrive = 2;//PWM Port
+		public static int frEncoder = 1;//Analog Port
 		
 		//Front Left:
-		public static int flAngle = 6;//PWM Port
-		public static int flDrive = 7;//PWM Port
-		public static int flEncoder = 3;//Analog Port
+		public static int flAngle = 4;//PWM Port
+		public static int flDrive = 5;//PWM Port
+		public static int flEncoder = 2;//Analog Port
 	}
 }

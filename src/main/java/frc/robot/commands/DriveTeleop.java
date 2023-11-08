@@ -12,6 +12,7 @@ public class DriveTeleop extends CommandBase {
     private DoubleSupplier x;
     private DoubleSupplier y;
     public DriveTeleop(DoubleSupplier X, DoubleSupplier Y, SwerveDrive swerveDrive) {
+        addRequirements(swerveDrive);
         x = X;
         y = Y;
         swervedrive = swerveDrive;

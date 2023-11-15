@@ -37,7 +37,7 @@ public class SwerveDrive extends SubsystemBase {
 	
 	    //Set to true to enable Field-oriented drive. Set to false for Robot-oriented drive.
 	    //Making this a boolean toggle in SmartDashboard or something is recommended, as this can be switched at any time during the game.
-	    if(true) {
+	    if(false) {
 	    	  double temp = y1*Math.cos(gyroRad) + x1*Math.sin(gyroRad-Math.PI); //Sometimes robot will drive the opposite direction in some orientations, read wiki for more info
 	 	   	 x1 = -y1*Math.sin(gyroRad-Math.PI) + x1*Math.cos(gyroRad);
 	 	   	 y1 = temp;
@@ -84,6 +84,11 @@ public class SwerveDrive extends SubsystemBase {
 		SmartDashboard.putNumber("backleft volt", backLeft.getVoltage());
 		SmartDashboard.putNumber("frontright volt", frontRight.getVoltage());
 		SmartDashboard.putNumber("frontleft volt", frontLeft.getVoltage());
+
+		SmartDashboard.putNumber("backright set", backRight.getSetpoint());
+		SmartDashboard.putNumber("backleft set", backLeft.getSetpoint());
+		SmartDashboard.putNumber("frontright set", frontRight.getSetpoint());
+		SmartDashboard.putNumber("frontleft set", frontLeft.getSetpoint());
 		
 		SmartDashboard.putNumber("ahrs angle", ahrs.getAngle());
 		SmartDashboard.putNumber("ahrs roll", ahrs.getRoll());

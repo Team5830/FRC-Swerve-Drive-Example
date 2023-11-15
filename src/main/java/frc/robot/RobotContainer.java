@@ -3,11 +3,11 @@ package frc.robot;
 
 import frc.robot.Constants.DrivePorts;
 import frc.robot.commands.*;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.WheelDrive;
 import frc.robot.subsystems.SwerveDrive;
-import edu.wpi.first.wpilibj.Joystick;
 
 public class RobotContainer {
 
@@ -20,8 +20,7 @@ public class RobotContainer {
   public static SwerveDrive swerveDrive;
 
   // Joysticks
-  private final Joystick joystickL = new Joystick(0);
-  private final Joystick joystickR = new Joystick(1);
+  private final XboxController controller = new XboxController(0);
   
   // A chooser for autonomous commands
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -38,7 +37,7 @@ public class RobotContainer {
 
     // Configure the button bindings
     configureButtonBindings();
-    swerveDrive.setDefaultCommand(new DriveTeleop(joystickL::getX, joystickL::getY, joystickR::getX, swerveDrive));
+    swerveDrive.setDefaultCommand(new DriveTeleop(controller::getLeftX, controller::getRightY, controller::getRightX, swerveDrive));
   }
 
   public static RobotContainer getInstance() {

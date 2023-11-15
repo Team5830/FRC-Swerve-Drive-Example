@@ -24,6 +24,10 @@ public class SwerveDrive extends SubsystemBase {
 	public AHRS ahrs = new AHRS(SerialPort.Port.kUSB1);
 
 	public void drive (double x1, double y1, double x2) {
+		SmartDashboard.putNumber("drive x1", x1);
+		SmartDashboard.putNumber("drive y1", y1);
+		SmartDashboard.putNumber("drive x2", x2);
+
 	    double r = Math.sqrt ((L * L) + (W * W));
 	    y1 *= -1;
 	    x1 *= -1;
@@ -82,6 +86,9 @@ public class SwerveDrive extends SubsystemBase {
 		SmartDashboard.putNumber("frontleft volt", frontLeft.getVoltage());
 		
 		SmartDashboard.putNumber("ahrs angle", ahrs.getAngle());
+		SmartDashboard.putNumber("ahrs roll", ahrs.getRoll());
+		SmartDashboard.putNumber("ahrs pitch", ahrs.getPitch());
+		SmartDashboard.putNumber("ahrs yaw", ahrs.getYaw());
 	}
 
 }

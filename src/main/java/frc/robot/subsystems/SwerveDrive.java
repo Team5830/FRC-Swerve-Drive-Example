@@ -1,9 +1,9 @@
-package org.usfirst.frc.team5830.robot.subsystems;
+package frc.robot.subsystems;
 
-import org.usfirst.frc.team5830.robot.RobotMap;
-import org.usfirst.frc.team5830.robot.commands.DriveTeleop;
-
-import edu.wpi.first.wpilibj.command.Subsystem;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * @author Jacob Misirian
@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Max P. implemented
  */
 
-public class SwerveDrive extends Subsystem {
+public class SwerveDrive extends SubsystemBase {
 	
 	double gyroRad;
 	
@@ -21,18 +21,23 @@ public class SwerveDrive extends Subsystem {
 	//W refers to the physical distance between the left and right wheels
 	public final double L = 21;
 	public final double W = 26;
-	
+	public AHRS ahrs = new AHRS(SerialPort.Port.kUSB1);
+
 	public void drive (double x1, double y1, double x2) {
+		SmartDashboard.putNumber("drive x1", x1);
+		SmartDashboard.putNumber("drive y1", y1);
+		SmartDashboard.putNumber("drive x2", x2);
+
 	    double r = Math.sqrt ((L * L) + (W * W));
 	    y1 *= -1;
 	    x1 *= -1;
 	    
 	    //The following is for Field oriented swerve drive. If you do not have a gyroscope, delete from here until specified.
-	    gyroRad = RobotMap.gyro.getAngle()*Math.PI/180;
-	    
+	    gyroRad = ahrs.getAngle()*Math.PI/180;
+	
 	    //Set to true to enable Field-oriented drive. Set to false for Robot-oriented drive.
 	    //Making this a boolean toggle in SmartDashboard or something is recommended, as this can be switched at any time during the game.
-	    if(true) {
+	    if(false) {
 	    	  double temp = y1*Math.cos(gyroRad) + x1*Math.sin(gyroRad-Math.PI); //Sometimes robot will drive the opposite direction in some orientations, read wiki for more info
 	 	   	 x1 = -y1*Math.sin(gyroRad-Math.PI) + x1*Math.cos(gyroRad);
 	 	   	 y1 = temp;
@@ -73,9 +78,22 @@ public class SwerveDrive extends Subsystem {
 	    
 	}
 	
-	public void initDefaultCommand() {
-		setDefaultCommand(new DriveTeleop());
+	@Override
+	public void periodic() {
+		SmartDashboard.putNumber("backright volt", backRight.getVoltage());
+		SmartDashboard.putNumber("backleft volt", backLeft.getVoltage());
+		SmartDashboard.putNumber("frontright volt", frontRight.getVoltage());
+		SmartDashboard.putNumber("frontleft volt", frontLeft.getVoltage());
+
+		SmartDashboard.putNumber("backright set", backRight.getSetpoint());
+		SmartDashboard.putNumber("backleft set", backLeft.getSetpoint());
+		SmartDashboard.putNumber("frontright set", frontRight.getSetpoint());
+		SmartDashboard.putNumber("frontleft set", frontLeft.getSetpoint());
+		
+		SmartDashboard.putNumber("ahrs angle", ahrs.getAngle());
+		SmartDashboard.putNumber("ahrs roll", ahrs.getRoll());
+		SmartDashboard.putNumber("ahrs pitch", ahrs.getPitch());
+		SmartDashboard.putNumber("ahrs yaw", ahrs.getYaw());
 	}
-	
 
 }

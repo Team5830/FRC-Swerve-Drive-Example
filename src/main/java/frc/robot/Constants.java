@@ -5,9 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot;
-
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+package frc.robot;
 
 /**
  * 
@@ -15,7 +13,7 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
  *
  */
 
-public class RobotMap {
+public class Constants {
 	/*
 	Swerve Drive Motors/Encoders
 	
@@ -37,30 +35,25 @@ public class RobotMap {
 	//Encoders are analog, basically potentiometers without end stops.
 	//We use the Andymark AM-2899 encoder for this. http://www.andymark.com/MA3-A10-250-N-absolute-encoder-p/am-2899.htm
 	//Enter the Analog port your encoder is connected to.
-	
-	//Back Right:
-	public static int brAngle = 0;//PWM Port
-	public static int brDrive = 1;//PWM Port
-	public static int brEncoder = 0;//Analog Port
-	
-	//Back Left:
-	public static int blAngle = 2;//PWM Port
-	public static int blDrive = 3;//PWM Port
-	public static int blEncoder = 1;//Analog Port
+	public static final class DrivePorts {
+		//Back Right:
+		public static int brAngle = 7;//PWM Port
+		public static int brDrive = 8;//PWM Port
+		public static int brEncoder = 0;//Analog Port
+		
+		//Back Left:
+		public static int blAngle = 0;//PWM Port
+		public static int blDrive = 1;//PWM Port
+		public static int blEncoder = 3;//Analog Port
 
-	//Front Right:
-	public static int frAngle = 4;//PWM Port
-	public static int frDrive = 5;//PWM Port
-	public static int frEncoder = 2;//Analog Port
-	
-	//Front Left:
-	public static int flAngle = 6;//PWM Port
-	public static int flDrive = 7;//PWM Port
-	public static int flEncoder = 3;//Analog Port
-	
-	//Gyro
-	//We happen to use the ADXRS540 SPI gyro. As long as your gyro can give SwerveDrive its angle in degrees, that's great.
-	//Gyroscope is optional. If you do not have one, delete this line, and specified code block in SwerveDrive subsystem.
-	//If you do not have a gyroscope and leave this here, the code WILL crash on startup.
-	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+		//Front Right:
+		public static int frAngle = 3;//PWM Port
+		public static int frDrive = 2;//PWM Port
+		public static int frEncoder = 1;//Analog Port
+		
+		//Front Left:
+		public static int flAngle = 4;//PWM Port
+		public static int flDrive = 5;//PWM Port
+		public static int flEncoder = 2;//Analog Port
+	}
 }

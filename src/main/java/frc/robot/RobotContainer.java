@@ -37,7 +37,7 @@ public class RobotContainer {
 
     // Configure the button bindings
     configureButtonBindings();
-    swerveDrive.setDefaultCommand(new DriveTeleop(controller::getLeftX, controller::getRightY, controller::getRightX, swerveDrive));
+    swerveDrive.setDefaultCommand(new DriveTeleop(controller::getLeftX, controller::getLeftY, controller::getRightX, swerveDrive));
   }
 
   public static RobotContainer getInstance() {

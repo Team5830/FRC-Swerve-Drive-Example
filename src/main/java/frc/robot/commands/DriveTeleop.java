@@ -24,7 +24,9 @@ public class DriveTeleop extends CommandBase {
   public void execute() {
     // In this specific setup, Xbox left stick moves and strafes, right stick
     // rotates
-    swerveDrive.drive(x1.getAsDouble(), y1.getAsDouble(), x2.getAsDouble());
+    if (Math.abs(x1.getAsDouble())+Math.abs(y1.getAsDouble())+Math.abs(x2.getAsDouble()) > 0.05) {
+      swerveDrive.drive(x1.getAsDouble()/2, y1.getAsDouble()/2, -x2.getAsDouble()/2);
+    }
   }
 
   @Override
